@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const fetchGamesStats = require('./data-fetch/fetch-games-stats');
 const fetchPlayersNames = require('./data-fetch/fetch-players-names');
-const initScores = require('./init-scores');
+const initScores = require('./controllers/calc-score-controller');
 
 
 const routes = require('./routes');

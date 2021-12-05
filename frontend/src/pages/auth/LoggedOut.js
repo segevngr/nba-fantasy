@@ -9,7 +9,7 @@ const LoggedOut = () => {
     const [upcomingResponse, setUpcomingResponse] = useState('');
 
     useEffect(() => {
-        axios.get("http://localhost:5000/upcoming").then(response => {
+        axios.get("http://localhost:5000/get-upcoming-games").then(response => {
             setUpcomingResponse(response.data);
         })
     }, []);

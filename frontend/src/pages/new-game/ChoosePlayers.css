@@ -16,9 +16,16 @@
 .players-container{
     background-color: #d5eaff;
     width: 700px;
+    height: 450px;
     margin: auto;
 }
 
 .btn{
     background-color: #1e4976;
+}
+
+.players-btn-con{
+    display: flex;
+    margin-left: 35%;
+    margin-top: 3%;
 }

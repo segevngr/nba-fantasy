@@ -8,7 +8,7 @@ const Scorer = (props) => {
                 {props.points +' Points for ' +props.name}
             </td>
             <td style={{textAlign: "right"}}>
-                +{props.points/2}
+                +{Math.floor(props.points/2)}
             </td>
         </tr>
     )

@@ -37,7 +37,9 @@ const createNewGame = async (req, res, next) => {
 
     try {
         await newGame.save(function (err, game) {
-            addGameToUser(game._id.toString(), owner);
+            let gameId = game._id.toString();
+            res.json(gameId);
+            addGameToUser(gameId, owner);
         });
     } catch (err) {
         const error = new HttpError(
@@ -46,7 +48,6 @@ const createNewGame = async (req, res, next) => {
         );
         return next(error);
     }
-    res.json(newGame);
 }
 
 const joinGame = async (req, res, next) => {

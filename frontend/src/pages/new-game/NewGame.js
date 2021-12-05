@@ -12,9 +12,9 @@ const NewGame = () => {
 
     return (
         <div>
-            <div className="new-game-title">Pick a name for your game </div>
+            <div className="new-game-title">New Game</div>
             <div className="input-container">
-                <Input title="Game name"
+                <Input title="Enter a name for the game:"
                        setInput = {setName}/>
                 <div className="new-game-btn-con">
                     <Link to="/"><div className="btn">Back </div></Link>

@@ -18,18 +18,12 @@ const PlayersInput = (props) => {
     }
 
     const updatePlayers = (vals) => {
+        props.updateInputCount(props.id, vals.length);
         if(vals[0] && vals[1]) {
             let player1 = {name: vals[0].name, id:getId(vals[0].name)};
             let player2 = {name: vals[1].name, id:getId(vals[1].name)};
             let players = [player1, player2];
-            if(props.updateScorers)
-                props.updateScorers(players);
-            if(props.updateTscorers)
-                props.updateTscorers(players);
-            if(props.updateAssists)
-                props.updateAssists(players);
-            if(props.updateDefenders)
-                props.updateDefenders(players);
+            props.updatePlayers(props.id, players);
         }
     }
 

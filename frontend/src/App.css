@@ -28,6 +28,18 @@ u{
     cursor: pointer;
 }
 
+.disabled-btn{
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
+    width: 90px;
+    color: white;
+    border: 1px solid white;
+    text-decoration: none;
+    margin:10px;
+    background-color: dimgray;
+}
+
 .btn:hover{
     background-color: #007fff;
     text-decoration: none;

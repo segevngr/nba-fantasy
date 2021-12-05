@@ -14,7 +14,7 @@
 }
 
 .input-container{
-    height: 250px;
+    height: 220px;
     width:420px;
     margin: auto;
     background-color: #1e4976;
@@ -23,6 +23,6 @@
 
 .new-game-btn-con{
     display: flex;
-    margin-top: 40px;
+    margin-top: 30px;
     margin-left: 20%;
 }

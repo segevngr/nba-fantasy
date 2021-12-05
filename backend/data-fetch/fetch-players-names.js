@@ -14,7 +14,7 @@ async function fetchPlayersNames() {
             url: `https://api-nba-v1.p.rapidapi.com/players/teamId/${id}`,
             headers: {
                 'x-rapidapi-host': 'api-nba-v1.p.rapidapi.com',
-                'x-rapidapi-key': 'a40f1906b7msh701ec4402a14ff9p1bd2bbjsn0a9df994bd40'
+                'x-rapidapi-key': 'KEY'
             }
         })
     };

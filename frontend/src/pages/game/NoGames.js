@@ -12,14 +12,14 @@ const NoGames = () => {
     const auth = useContext(AuthContext);
 
     useEffect(() => {
-        axios.get("http://localhost:5000/upcoming").then(response => {
+        axios.get("http://localhost:5000/get-upcoming-games").then(response => {
             setUpcomingResponse(response.data);
         })
     }, []);
 
 
     if(auth.userId) {
-        axios.get(`http://localhost:5000/users/${auth.userId}`)
+        axios.get(`http://localhost:5000/user/${auth.userId}`)
             .then(response => {
                 console.log(response.data.games)
                 if(response.data.games.length > 0) {

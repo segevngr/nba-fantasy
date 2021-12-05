@@ -93,7 +93,9 @@ const TeamPicker = () => {
             </div>
             <div className="team-picker-btn-container">
                 <Link to={getBackURL()}><div className="btn">Back</div></Link>
-                <Link to={getSelectedTeams()}><div className="btn">Next</div></Link>
+                {teamsSelected===5 ?
+                    <Link to={getSelectedTeams()}><div className="btn">Next</div></Link>
+                    : <div className="disabled-btn">Next</div>}
             </div>
         </div>
 
