@@ -1,0 +1,24 @@
+.game-score-odd{
+    width: 410px;
+    background-color: #003f6f;
+    padding: 5px;
+}
+
+.game-score-even{
+    width: 410px;
+    background-color: #004a83;
+    padding: 5px;
+}
+
+.game-stats-logo{
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.game-stats-team{
+    text-align: left;
+}
+
+.game-stats-score{
+    text-align: right;
+}

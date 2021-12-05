@@ -1,0 +1,47 @@
+.user-rank-0{
+    text-align: center;
+    background-color: #004a83;
+    height: 50px;
+    padding: 5px;
+}
+
+.user-rank-1{
+    text-align: center;
+    background-color: #003f6f;
+    height: 50px;
+    padding: 5px;
+}
+
+.ranking-table{
+    width: 430px;
+}
+
+.ranking-container{
+    width: 430px;
+    height: 320px;
+    background-color: #165281;
+}
+
+.table-headers{
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+}
+
+.rank-col{
+    width: 20%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.nam-col{
+    width: 40%;
+}
+
+.score-col{
+    width: 20%;
+}
+
+.change-col{
+    width: 20%;
+}

@@ -1,0 +1,14 @@
+.login-title{
+    background-color: #007fff;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    height: 40px;
+    width: 450px;
+    border-radius: 10px;
+    padding-left: 20px;
+    margin:auto;
+    margin-top: 50px;
+    padding: 5px;
+    padding-left: 20px;
+}

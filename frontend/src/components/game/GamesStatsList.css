@@ -1,0 +1,5 @@
+.scores-list{
+    height:320px;
+    overflow:scroll;
+    overflow-x:hidden;
+}

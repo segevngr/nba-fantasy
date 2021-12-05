@@ -1,0 +1,55 @@
+body{
+    background-color: #0a1929;
+    color: #d5eaff;
+}
+
+a {
+    color: #d5eaff;
+}
+
+a:hover{
+    color: white;
+}
+
+u{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.btn{
+    font-size: 20px;
+    text-align: center;
+    padding: 5px;
+    width: 90px;
+    color: white;
+    border: 1px solid white;
+    text-decoration: none;
+    margin:10px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #007fff;
+    text-decoration: none;
+}
+
+.nba-fantasy{
+    font-size: 60px;
+    background-color: #004a83;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-family: "Century Gothic";
+}
+
+.frame{
+    background-color: #001e3c;
+    width: 1000px;
+    height: 800px;
+    border-radius: 10px;
+    border: solid 1px #1e4976;
+    margin: auto;
+    margin-top: 50px;
+    vertical-align: middle;
+}

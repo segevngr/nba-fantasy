@@ -1,0 +1,29 @@
+.upcoming-even{
+    width: 900px;
+    background-color: #003f6f;
+    padding: 2px;
+    height: 30px;
+    margin: auto;
+}
+
+.upcoming-odd{
+    width: 900px;
+    background-color: #004a83;
+    padding: 2px;
+    height: 30px;
+    margin: auto;
+}
+
+.upcoming-team{
+    width: 300px;
+}
+
+.upcoming-logo{
+    width: 50px;
+    text-align: center;
+}
+
+.date{
+    text-align: right;
+    padding-right: 10px;
+}

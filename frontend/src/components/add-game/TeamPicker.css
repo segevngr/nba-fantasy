@@ -1,0 +1,15 @@
+.teams-grid{
+    display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-columns: auto auto auto auto auto auto;
+    text-align: center;
+    width: 90%;
+}
+
+.team-picker-btn-container{
+    margin-left: 40%;
+    display: flex;
+    text-decoration: none;
+    text-align: center;
+}

@@ -1,0 +1,64 @@
+.upcoming-container{
+    margin: auto;
+    width: 900px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.container-title{
+    background-color: #007fff;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    height: 40px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.bottom-section{
+    width: 900px;
+    margin: auto;
+}
+
+.ranking-con{
+    width: 500px;
+    margin-left: 0;
+    vertical-align: top;
+}
+.ranking-title{
+    background-color: #007fff;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    height: 40px;
+    width: 430px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+
+.games-stats-container{
+    width: 400px;
+}
+
+.loader-container{
+    width: 420px;
+    height: 320px;
+    background-color: #003f6f;
+    padding-left: 190px;
+    padding-top: 120px;
+}
+
+.game-stats-title{
+    background-color: #007fff;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    height: 40px;
+    width: 430px;
+    border-radius: 10px;
+    padding-left: 20px;
+    padding-top: 5px;
+}
+

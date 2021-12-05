@@ -1,0 +1,21 @@
+.team-btn {
+    background-color: #003f6f;
+    padding: 5px;
+    border-radius: 2px;
+    margin: 4px;
+
+}
+
+.team-btn:hover {
+    background-color: #1e4976;
+    padding: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.team-btn-selected {
+    background-color: #007fff;
+    padding: 5px;
+    border-radius: 2px;
+    margin: 4px;
+}

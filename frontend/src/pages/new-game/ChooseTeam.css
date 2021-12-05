@@ -1,0 +1,15 @@
+.choose-team-title{
+    background-color: #007fff;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    height: 40px;
+    width: 900px;
+    border-radius: 10px;
+    padding-left: 20px;
+    margin:auto;
+    padding: 5px;
+    padding-left: 20px;
+    margin-bottom: 5px;
+    margin-top: 20px;
+}
