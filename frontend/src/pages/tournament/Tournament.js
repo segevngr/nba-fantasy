@@ -1,6 +1,6 @@
-import UpcomingGamesList from "../../components/tournament/UpcomingGamesList";
+import UpcomingGamesList from "../../components/upcoming-games/UpcomingGamesList";
 import './Tournament.css';
-import GamesStatsList from "../../components/tournament/GamesStatsList";
+import GamesStatsList from "../../components/tournament-games/GamesStatsList";
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {useParams} from "react-router-dom";

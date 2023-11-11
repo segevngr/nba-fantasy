@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
-import UpcomingGamesList from "../../components/tournament/UpcomingGamesList";
+import UpcomingGamesList from "../../components/upcoming-games/UpcomingGamesList";
 import './NoTournaments.css'
 import {AuthContext} from "../../utils/auth-context";
 

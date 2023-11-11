@@ -1,11 +1,11 @@
  import React, {useContext} from 'react';
 import './GameStats.css'
 import LOGOS from '../../assets/team-logos/logos';
-import TeamWin from "./nba-game-stats/TeamWin";
-import Scorer from "./nba-game-stats/Scorer";
-import Tscorer from "./nba-game-stats/Tscorer";
-import Defender from "./nba-game-stats/Defender";
-import Assists from "./nba-game-stats/Assists";
+import TeamWin from "./players-stats/TeamWin";
+import Scorer from "./players-stats/Scorer";
+import Tscorer from "./players-stats/Tscorer";
+import Defender from "./players-stats/Defender";
+import Assists from "./players-stats/Assists";
 import {AuthContext} from "../../utils/auth-context";
 
 
