@@ -5,16 +5,16 @@
   "dependencies": {
     "@emotion/react": "^11.6.0",
     "@emotion/styled": "^11.6.0",
-    "@mui/material": "^5.2.0",
+    "@mui/material": "^5.2.1",
     "@mui/styles": "^5.2.2",
-    "axios": "^0.24.0",
+    "axios": "^1.6.1",
     "install": "^0.13.0",
-    "material-ui": "^1.0.0-beta.47",
+    "material-ui": "^0.20.2",
     "npm": "^8.1.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-router-dom": "^6.0.2",
-    "react-scripts": "3.2.0"
+    "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

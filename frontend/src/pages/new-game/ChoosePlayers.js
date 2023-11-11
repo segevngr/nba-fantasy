@@ -69,7 +69,7 @@ const ChoosePlayers = () => {
 
     return (
         <div>
-            <div className="players">Choose Players: </div>
+            <div className="players">Choose 2 players under each category: </div>
             {!playersMap ?  '' :
                 <div className="players-container">
                     <PlayersInput playerMap = {playersMap}
@@ -93,7 +93,7 @@ const ChoosePlayers = () => {
                                   updatePlayers={updatePlayers}
                                   updateInputCount={updateInputCount}
                                   id={3}/>
-                    {!isValid? <div className="valid-error">Please choose 2 players at each category.</div> : null}
+                    {!isValid? <div className="valid-error">  Please choose 2 players under each category.</div> : null}
                     <div className="players-btn-con">
                         <Link to={"/newgame/" +gname}><div className="btn">Back</div></Link>
                         <div onClick={saveGame} className="btn">Finish</div>

@@ -3,7 +3,7 @@ const NBAGame = require('../models/nba-game')
 const Upcoming = require('../models/upcoming')
 const Player = require('../models/player');
 
-
+// TODO: change names to ALL
 const getGamesStats = async (req, res, next) => {
     let gamesStats;
     try {
@@ -19,6 +19,7 @@ const getGamesStats = async (req, res, next) => {
     res.json(gamesStats);
 };
 
+// Gets all upcoming games data from server
 const getUpcoming = async (req, res, next) => {
     let upcomingGames;
     try {
@@ -34,7 +35,9 @@ const getUpcoming = async (req, res, next) => {
     res.json(upcomingGames);
 };
 
+// Gets all players names and ids from the server
 const getPlayers = async (req, res, next) => {
+    // TODO: useless pid
     const pid = req.params.pid;
     let playerNames;
     try {

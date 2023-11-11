@@ -29,7 +29,7 @@ async function fetchGamesStats(DATE) {
     for (let game of games) {
         console.log("fetching data for game " +game.gameId)
         // get players stats:
-        const playersReq = players_req(game.gameId);
+        const playeyrsReq = players_req(game.gameId);
         const playersRes = await axios.request(playersReq);
         let playersArr = Array(30);
         let players = playersRes.data.api.statistics;

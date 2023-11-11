@@ -2,6 +2,7 @@ const HttpError = require('../models/http-error');
 const UserGame = require('../models/user-game');
 const User = require('../models/user');
 
+// Get user game from db by its id
 const getGame = async (req, res, next) => {
     const gid = req.params.gid;
     let game;
@@ -20,6 +21,7 @@ const getGame = async (req, res, next) => {
     res.json(game);
 };
 
+// Gets the game creator user id and its picks (teams, players) from the client and saves the game in the db
 const createNewGame = async (req, res, next) => {
     const {owner, game_name, teams, players} = req.body;
 
@@ -35,6 +37,7 @@ const createNewGame = async (req, res, next) => {
         users_pref: [userPref],
     });
 
+    // TODO: whats function here? game?
     try {
         await newGame.save(function (err, game) {
             let gameId = game._id.toString();

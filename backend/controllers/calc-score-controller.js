@@ -2,6 +2,7 @@ const UserGame = require('../models/user-game');
 const NBAGame = require('../models/nba-game');
 const HttpError = require("../models/http-error");
 
+// Gets user-id and game-id and calculates the points the user earned in the game
 const calcUserGameScore = async (req, res, next) => {
     const { gid, uid } = req.body;
     const nbaGames = await NBAGame.find();
@@ -52,7 +53,7 @@ const calcScore = (nbaGames, teams, players) => {
                 if (player.pid === players.scorers[1].id)
                     score += Math.floor(parseInt(player.points) / 2);
 
-                // Tscorers:
+                // 3pt scorers:
                 if (player.pid === players.tscorers[0].id)
                     score += parseInt(player.tpm);
                 if (player.pid === players.tscorers[1].id)

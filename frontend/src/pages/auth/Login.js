@@ -34,7 +34,7 @@ const Login = () => {
             })
             .catch(function (error) {
             if (error.response)
-                setError("Invalid credentials, could not log you in.");
+                setError("Invalid credentials, Please try again.");
             })
     }
 

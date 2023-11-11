@@ -68,7 +68,7 @@ const JoinGamePlayers = () => {
 
     return (
         <div>
-            <div className="players">Choose Players: </div>
+            <div className="players">Choose 2 players under each category: </div>
             {!playersMap ?  '' :
                 <div className="players-container">
                     <PlayersInput playerMap = {playersMap}
@@ -91,7 +91,7 @@ const JoinGamePlayers = () => {
                                   updatePlayers={updatePlayers}
                                   updateInputCount={updateInputCount}
                                   id={3}/>
-                    {!isValid? <div className="valid-error">Please choose 2 players at each category.</div> : null}
+                    {!isValid? <div className="valid-error">  Please choose 2 players at each category.</div> : null}
                     <div className="players-btn-con">
                         <Link to={"/joingame/" +gid}><div className="btn">Back</div></Link>
                         <div onClick={joinGame} className="btn">Finish</div>
