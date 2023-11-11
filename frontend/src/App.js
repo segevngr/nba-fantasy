@@ -2,14 +2,14 @@ import React, { useState, useCallback, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import './App.css'
 import Navigation from "./components/Navigation";
-import Game from './pages/game/Game';
-import NewGame from "./pages/new-game/NewGame";
-import ChooseTeam from "./pages/new-game/ChooseTeam";
-import ChoosePlayers from "./pages/new-game/ChoosePlayers";
-import NoGames from "./pages/game/NoGames";
-import JoinGame from "./pages/join-game/JoinGame";
-import JoinGameTeams from "./pages/join-game/JoinGameTeams";
-import JoinGamePlayers from "./pages/join-game/JoinGamePlayers";
+import Tournament from './pages/tournament/Tournament';
+import NewTournament from "./pages/new-tournament/NewTournament";
+import ChooseTeam from "./pages/new-tournament/ChooseTeam";
+import ChoosePlayers from "./pages/new-tournament/ChoosePlayers";
+import NoTournaments from "./pages/tournament/NoTournaments";
+import JoinTournament from "./pages/join-tournament/JoinTournament";
+import JoinTournamentTeams from "./pages/join-tournament/JoinTournamentTeams";
+import JoinTournamentPlayers from "./pages/join-tournament/JoinTournamentPlayers";
 import LoggedOut from "./pages/auth/LoggedOut";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
@@ -53,14 +53,14 @@ function App() {
     if (token) {
         routes = (
             <Routes>
-                <Route path="/" element={<NoGames/>}/>
-                <Route path="/game/:gid" element={<Game/>}/>
-                <Route path="/joingame" element={<JoinGame/>}/>
-                <Route path="/joingame/:gid" element={<JoinGameTeams/>}/>
-                <Route path="/joingame/:gid/:tid1/:tid2/:tid3/:tid4/:tid5" element={<JoinGamePlayers/>}/>
-                <Route path="/newgame" element={<NewGame/>}/>
-                <Route path="/newgame/:gname" element={<ChooseTeam/>}/>
-                <Route path="/newgame/:gname/:tid1/:tid2/:tid3/:tid4/:tid5" element={<ChoosePlayers/>}/>
+                <Route path="/" element={<NoTournaments/>}/>
+                <Route path="/tournament/:tid" element={<Tournament/>}/>
+                <Route path="/jointournament" element={<JoinTournament/>}/>
+                <Route path="/jointournament/:tid" element={<JoinTournamentTeams/>}/>
+                <Route path="/jointournament/:tid/:tid1/:tid2/:tid3/:tid4/:tid5" element={<JoinTournamentPlayers/>}/>
+                <Route path="/newtournament" element={<NewTournament/>}/>
+                <Route path="/newtournament/:tournament_name" element={<ChooseTeam/>}/>
+                <Route path="/newtournament/:tournament_name/:tid1/:tid2/:tid3/:tid4/:tid5" element={<ChoosePlayers/>}/>
             </Routes>
         );
     } else{

@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react";
-import Input from "../../components/Input";
+import TextInput from "../../components/TextInput";
 import {Link, useNavigate} from "react-router-dom";
 
 import {
@@ -10,6 +10,7 @@ import {
 import './SignUp.css'
 import axios from "axios";
 import {AuthContext} from "../../utils/auth-context";
+import PassInput from "../../components/PassInput";
 
 const SignUp = () => {
     const auth = useContext(AuthContext);
@@ -85,17 +86,17 @@ const SignUp = () => {
         <div>
             <div className='signup-title'>Sign Up</div>
             <div className='signup-con'>
-                <Input title="Username"
-                       validators={[VALIDATOR_REQUIRE()]}
-                       setInput ={setUserInput}
-                       setValid={updateValidUser}/>
+                <TextInput title="Username"
+                           validators={[VALIDATOR_REQUIRE()]}
+                           setInput ={setUserInput}
+                           setValid={updateValidUser}/>
                 {usernameErr? <div className="valid-error">Please enter a username.</div> : null}
-                <Input title="Email"
-                       validators={[VALIDATOR_EMAIL()]}
-                       setInput = {setEmailInput}
-                       setValid={updateEmailValid}/>
+                <TextInput title="Email"
+                           validators={[VALIDATOR_EMAIL()]}
+                           setInput = {setEmailInput}
+                           setValid={updateEmailValid}/>
                 {emailErr? <div className="valid-error">Please enter a valid Email.</div> : null}
-                <Input title ="Password"
+                <PassInput title ="Password"
                        setInput={setPasswordInput}
                        validators={[VALIDATOR_MINLENGTH(6)]}
                        setValid={updatePasswordValid}/>

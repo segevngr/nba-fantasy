@@ -1,7 +1,7 @@
 import React, {useState, useContext} from "react";
 import './Login.css'
 import {Link, useNavigate} from "react-router-dom";
-import Input from "../../components/Input";
+import TextInput from "../../components/TextInput";
 import axios from "axios";
 import {AuthContext} from "../../utils/auth-context";
 
@@ -42,10 +42,10 @@ const Login = () => {
         <div>
             <div className="login-title">Login</div>
             <div className="signup-con">
-                <Input title="Email"
-                       setInput = {setEmailInput}/>
-                <Input title ="Password"
-                       setInput={setPasswordInput}/>
+                <TextInput title="Email"
+                           setInput = {setEmailInput}/>
+                <TextInput title ="Password"
+                           setInput={setPasswordInput}/>
                 <div className="valid-error">{error}</div>
                 <div className='signup-buttons'>
                     <Link to="/"><div className='btn'>Back </div></Link>

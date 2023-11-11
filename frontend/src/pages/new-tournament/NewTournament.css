@@ -1,4 +1,4 @@
-.new-game-title{
+.new-tournament-title{
     background-color: #007fff;
     color: white;
     font-weight: bold;
@@ -21,7 +21,7 @@
     padding: 20px;
 }
 
-.new-game-btn-con{
+.new-tournament-btn-con{
     display: flex;
     margin-top: 30px;
     margin-left: 20%;

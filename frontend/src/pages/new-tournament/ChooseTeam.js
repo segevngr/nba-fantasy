@@ -1,6 +1,6 @@
 import React from 'react';
 import './ChooseTeam.css';
-import TeamPicker from "../../components/add-game/TeamPicker";
+import TeamPicker from "../../components/add-tournament/TeamPicker";
 
 const ChooseTeam = () => {
 

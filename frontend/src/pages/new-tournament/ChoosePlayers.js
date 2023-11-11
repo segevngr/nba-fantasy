@@ -1,12 +1,13 @@
 import React, {useEffect, useState, useContext} from 'react';
-import PlayersInput from "../../components/add-game/PlayersInput";
+import './ChoosePlayers.css';
+import PlayersInput from "../../components/add-tournament/PlayersInput";
 import axios from "axios";
 import {Link, useParams} from "react-router-dom";
 import {AuthContext} from "../../utils/auth-context";
 
-const JoinGamePlayers = () => {
+const ChoosePlayers = () => {
     const auth = useContext(AuthContext);
-    const {gid, tid1, tid2, tid3, tid4, tid5} = useParams();
+    const {tournament_name, tid1, tid2, tid3, tid4, tid5} = useParams();
 
     const [playersMap, setPlayersMap] = useState('');
     const [players, setPlayers] = useState(Array(4).fill([null, null]));
@@ -42,27 +43,27 @@ const JoinGamePlayers = () => {
         })
     }, []);
 
-    const joinGame = () => {
+    const saveTournament = () => {
         if(!isValidInput()) {
             setIsValid(false);
             return;
         }
-        axios.post("http://localhost:5000/join-game", {
-            gid: gid,
-            uid: auth.userId,
+        axios.post("http://localhost:5000/new-tournament", {
+            owner: auth.userId,
+            name: tournament_name,
             teams: [tid1, tid2, tid3, tid4, tid5],
             players: {scorers: players[0], tscorers: players[1], assists: players[2], defenders: players[3]}})
             .then(response => {
-                calcUserGameScore();
-            });
+                calcTournamentScore(response.data);
+        });
     };
 
-    const calcUserGameScore = () => {
+    const calcTournamentScore = (tid) => {
         axios.post("http://localhost:5000/calc-score", {
-            gid: gid,
+            tid: tid,
             uid: auth.userId})
             .then(response => {
-                window.location.href = `http://localhost:3000/game/${gid}`;
+                window.location.href = `http://localhost:3000/tournament/${tid}`;
             });
     }
 
@@ -75,7 +76,8 @@ const JoinGamePlayers = () => {
                                   input = {"Scorers"}
                                   updatePlayers={updatePlayers}
                                   updateInputCount={updateInputCount}
-                                  id={0}/>
+                                  id={0}
+                    />
                     <PlayersInput playerMap = {playersMap}
                                   input = {"3-Point Scorers"}
                                   updatePlayers={updatePlayers}
@@ -91,10 +93,10 @@ const JoinGamePlayers = () => {
                                   updatePlayers={updatePlayers}
                                   updateInputCount={updateInputCount}
                                   id={3}/>
-                    {!isValid? <div className="valid-error">  Please choose 2 players at each category.</div> : null}
+                    {!isValid? <div className="valid-error">  Please choose 2 players under each category.</div> : null}
                     <div className="players-btn-con">
-                        <Link to={"/joingame/" +gid}><div className="btn">Back</div></Link>
-                        <div onClick={joinGame} className="btn">Finish</div>
+                        <Link to={"/newtournament/" +tournament_name}><div className="btn">Back</div></Link>
+                        <div onClick={saveTournament} className="btn">Finish</div>
                     </div>
                 </div>
             }
@@ -102,4 +104,4 @@ const JoinGamePlayers = () => {
     )
 }
 
-export default JoinGamePlayers;
+export default ChoosePlayers;

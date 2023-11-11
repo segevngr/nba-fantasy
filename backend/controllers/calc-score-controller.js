@@ -1,14 +1,14 @@
-const UserGame = require('../models/user-game');
+const Tournament = require('../models/tournaments');
 const NBAGame = require('../models/nba-game');
 const HttpError = require("../models/http-error");
 
-// Gets user-id and game-id and calculates the points the user earned in the game
-const calcUserGameScore = async (req, res, next) => {
-    const { gid, uid } = req.body;
+// Gets tournament id and user id, and calculates the points the user earned in the tournament
+const calcUserTournamentScore = async (req, res, next) => {
+    const { tid, uid } = req.body;
     const nbaGames = await NBAGame.find();
-    const userGame = await UserGame.findById(gid);
+    const userTournament = await Tournament.findById(tid);
 
-    for(let userP of userGame.users_pref){
+    for(let userP of userTournament.users_pref){
         if(userP.userId === uid) {
             console.log(userP);
             userP.score = calcScore(nbaGames, userP.teams, userP.players);
@@ -17,16 +17,16 @@ const calcUserGameScore = async (req, res, next) => {
     }
 
     try {
-        userGame.markModified('users_pref');
-        await userGame.save();
+        userTournament.markModified('users_pref');
+        await userTournament.save();
     } catch (err) {
         const error = new HttpError(
-            'Something went wrong, could not update game score.',
+            'Something went wrong, could not update tournament score.',
             500
         );
         return next(error);
     }
-    res.json(userGame);
+    res.json(userTournament);
 }
 
 const calcScore = (nbaGames, teams, players) => {
@@ -76,4 +76,4 @@ const calcScore = (nbaGames, teams, players) => {
     return score;
 }
 
-module.exports = calcUserGameScore;
+module.exports = calcUserTournamentScore;

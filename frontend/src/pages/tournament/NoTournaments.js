@@ -1,11 +1,11 @@
 import React, {useEffect, useState, useContext} from "react";
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
-import UpcomingGamesList from "../../components/game/UpcomingGamesList";
-import './NoGames.css'
+import UpcomingGamesList from "../../components/tournament/UpcomingGamesList";
+import './NoTournaments.css'
 import {AuthContext} from "../../utils/auth-context";
 
-const NoGames = () => {
+const NoTournaments = () => {
     const [upcomingResponse, setUpcomingResponse] = useState('');
     let navigate = useNavigate();
 
@@ -21,9 +21,9 @@ const NoGames = () => {
     if(auth.userId) {
         axios.get(`http://localhost:5000/user/${auth.userId}`)
             .then(response => {
-                console.log(response.data.games)
-                if(response.data.games.length > 0) {
-                    navigate(`/game/${response.data.games[0]._id.toString()}`)
+                console.log(response.data)
+                if(response.data.tournaments.length > 0) {
+                    navigate(`/tournament/${response.data.tournaments[0]._id.toString()}`)
                 }
             })
     }
@@ -36,12 +36,12 @@ const NoGames = () => {
             </div>
             <div className="no-games">
                 You have no Games!<br />
-                <Link to="/joingame"><u>Join game</u></Link>
+                <Link to="/jointournament"><u>Join game</u></Link>
                 <span> or </span>
-                <Link to="/newgame"><u>Create a new one</u></Link>
+                <Link to="/newtournament"><u>Create a new one</u></Link>
             </div>
         </div>
     )
 }
 
-export default NoGames;
+export default NoTournaments;

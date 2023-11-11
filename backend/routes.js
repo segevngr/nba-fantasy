@@ -1,25 +1,25 @@
 const express = require('express');
 
 const dataControllers = require('./controllers/data-controllers');
-const gamesControllers = require('./controllers/games-controllers');
-const usersControllers = require('./controllers/users-controllers');
+const tournamentControllers = require('./controllers/tournament-controllers');
+const usersControllers = require('./controllers/user-controllers');
 const calcScoreController = require('./controllers/calc-score-controller')
 
 const router = express.Router();
 
-router.get('/get-upcoming-games', dataControllers.getUpcoming);
-router.get('/get-players', dataControllers.getPlayers);
-router.get('/get-games-stats', dataControllers.getGamesStats);
+router.get('/get-upcoming-games', dataControllers.getAllUpcomingGames);
+router.get('/get-players', dataControllers.getAllPlayers);
+router.get('/get-nba-games', dataControllers.getAllNBAGames);
 
 router.post('/signup', usersControllers.signup);
 router.post('/login', usersControllers.login);
 
-router.get('/users', usersControllers.getUsers);
-router.get('/user/:uid', usersControllers.getUser);
-router.get('/game/:gid', gamesControllers.getGame);
+router.get('/users', usersControllers.getAllUsers);
+router.get('/user/:uid', usersControllers.getUserById);
+router.get('/tournament/:tid', tournamentControllers.getTournamentById);
 
-router.post('/new-game', gamesControllers.createNewGame);
-router.post('/join-game', gamesControllers.joinGame);
+router.post('/new-tournament', tournamentControllers.createNewTournament);
+router.post('/join-tournament', tournamentControllers.joinTournament);
 router.post('/calc-score', calcScoreController);
 
 

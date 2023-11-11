@@ -1,11 +1,11 @@
-import React, {useContext} from 'react';
+ import React, {useContext} from 'react';
 import './GameStats.css'
 import LOGOS from '../../assets/team-logos/logos';
-import TeamWin from "./game-stats/TeamWin";
-import Scorer from "./game-stats/Scorer";
-import Tscorer from "./game-stats/Tscorer";
-import Defender from "./game-stats/Defender";
-import Assists from "./game-stats/Assists";
+import TeamWin from "./nba-game-stats/TeamWin";
+import Scorer from "./nba-game-stats/Scorer";
+import Tscorer from "./nba-game-stats/Tscorer";
+import Defender from "./nba-game-stats/Defender";
+import Assists from "./nba-game-stats/Assists";
 import {AuthContext} from "../../utils/auth-context";
 
 
@@ -28,7 +28,7 @@ const GameStats = (props) => {
     let tscorers = [['', ''], ['', '']];
     let defenders = [['', ''], ['', '']];
 
-    const getWinner = () => {
+    const getWinnerTeam = () => {
         let winnerName;
         let winnerId;
         if (parseInt(homeScore) > parseInt(awayScore)) {
@@ -115,7 +115,7 @@ const GameStats = (props) => {
         }
 
         if(userPref) {
-            getWinner();
+            getWinnerTeam();
             getScorers();
             getAssists();
             getTscorers();

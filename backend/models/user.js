@@ -6,7 +6,7 @@ const user = new Schema({
     username: {type: String, required: true},
     email: {type: String, required: true},
     password: {type: String, required: true},
-    games: [{ type: mongoose.Types.ObjectId, required: true, ref: 'UserGame' }],
+    tournaments: [{ type: mongoose.Types.ObjectId, required: true, ref: 'Tournament' }],
 });
 
 module.exports = mongoose.model('User', user);

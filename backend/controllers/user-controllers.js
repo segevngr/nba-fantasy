@@ -3,7 +3,7 @@ const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-const getUsers = async (req, res, next) => {
+const getAllUsers = async (req, res, next) => {
     let users;
     try {
         users = await User.find();
@@ -18,11 +18,10 @@ const getUsers = async (req, res, next) => {
     res.json(users);
 };
 
-const getUser = async (req, res, next) => {
-    const uid = req.params.uid;
+const getUserById = async (req, res, next) => {
     let user;
     try {
-        user = await User.findById(uid).populate('games');
+        user = await User.findById(req.params.uid).populate('tournaments');
     } catch (err) {
         const error = new HttpError(
             'Something went wrong, could not find user.',
@@ -64,7 +63,7 @@ const signup = async (req, res, next) => {
         username,
         email,
         password: hashedPassword,
-        games: []
+        tournaments: []
     });
 
     try {
@@ -139,7 +138,7 @@ const login = async (req, res, next) => {
     });
 };
 
-exports.getUsers = getUsers;
-exports.getUser = getUser;
+exports.getAllUsers = getAllUsers;
+exports.getUserById = getUserById;
 exports.signup = signup;
 exports.login = login;

@@ -1,37 +1,37 @@
-import UpcomingGamesList from "../../components/game/UpcomingGamesList";
-import './Game.css';
-import GamesStatsList from "../../components/game/GamesStatsList";
+import UpcomingGamesList from "../../components/tournament/UpcomingGamesList";
+import './Tournament.css';
+import GamesStatsList from "../../components/tournament/GamesStatsList";
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
-import RankingTable from "../../components/game/RankingTable";
+import RankingTable from "../../components/tournament/RankingTable";
 
-const Game = () => {
-    const { gid } = useParams();
+const Tournament = () => {
+    const { tid } = useParams();
 
     const [upcomingResponse, setUpcomingResponse] = useState('');
     const [gamesStatsResponse, setGamesStatsResponse] = useState('');
-    const [gameResponse, setGameResponse] = useState('');
+    const [tournamentResponse, setTournamentResponse] = useState('');
     const [usersResponse, setUsersResponse] = useState('');
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/game/${gid}`).then(response => {
-            setGameResponse(response.data);
+        axios.get(`http://localhost:5000/tournament/${tid}`).then(response => {
+            setTournamentResponse(response.data);
         });
 
         axios.get(`http://localhost:5000/users`).then(response => {
             setUsersResponse(response.data);
         });
 
-        axios.get("http://localhost:5000/get-games-stats").then(response => {
+        axios.get("http://localhost:5000/get-nba-games").then(response => {
             setGamesStatsResponse(response.data);
         });
 
         axios.get("http://localhost:5000/get-upcoming-games").then(response => {
             setUpcomingResponse(response.data);
         })
-        }, [gid]);
+        }, [tid]);
 
 
     return (
@@ -47,7 +47,7 @@ const Game = () => {
                         <div className='ranking-title'>Ranking</div>
                         <RankingTable
                             users = {usersResponse}
-                            game = {gameResponse}
+                            game = {tournamentResponse}
                         />
                     </td>
                     <td className='games-stats-container'>
@@ -55,7 +55,7 @@ const Game = () => {
                         {gamesStatsResponse ?
                             <GamesStatsList
                                 gamesStatsResponse = {gamesStatsResponse}
-                                gameResponse = {gameResponse}
+                                gameResponse = {tournamentResponse}
                             />
                             :
                             <div className='loader-container'><CircularProgress /></div>}
@@ -67,4 +67,4 @@ const Game = () => {
     );
 }
 
-export default Game;
+export default Tournament;

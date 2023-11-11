@@ -27,7 +27,7 @@ async function fetchGamesStats(DATE) {
     const games = gamesRes.data.api.games;
 
     for (let game of games) {
-        console.log("fetching data for game " +game.gameId)
+        console.log("fetching data for tournament " +game.gameId)
         // get players stats:
         const playeyrsReq = players_req(game.gameId);
         const playersRes = await axios.request(playersReq);

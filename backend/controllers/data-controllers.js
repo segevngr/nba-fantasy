@@ -3,11 +3,11 @@ const NBAGame = require('../models/nba-game')
 const Upcoming = require('../models/upcoming')
 const Player = require('../models/player');
 
-// TODO: change names to ALL
-const getGamesStats = async (req, res, next) => {
-    let gamesStats;
+// Gets all NBA games stats from db
+const getAllNBAGames = async (req, res, next) => {
+    let nbaGames;
     try {
-        gamesStats = await NBAGame.find();
+        nbaGames = await NBAGame.find();
     } catch (err) {
         const error = new HttpError(
             'Something went wrong, could not find games stats.',
@@ -16,11 +16,11 @@ const getGamesStats = async (req, res, next) => {
         return next(error);
     }
 
-    res.json(gamesStats);
+    res.json(nbaGames);
 };
 
-// Gets all upcoming games data from server
-const getUpcoming = async (req, res, next) => {
+// Gets all NBA upcoming games data from db
+const getAllUpcomingGames = async (req, res, next) => {
     let upcomingGames;
     try {
         upcomingGames = await Upcoming.find();
@@ -35,10 +35,8 @@ const getUpcoming = async (req, res, next) => {
     res.json(upcomingGames);
 };
 
-// Gets all players names and ids from the server
-const getPlayers = async (req, res, next) => {
-    // TODO: useless pid
-    const pid = req.params.pid;
+// Gets all NBA player names and ids from db
+const getAllPlayers = async (req, res, next) => {
     let playerNames;
     try {
         playerNames = await Player.find();
@@ -53,6 +51,6 @@ const getPlayers = async (req, res, next) => {
     res.json(playerNames);
 };
 
-exports.getGamesStats = getGamesStats;
-exports.getUpcoming = getUpcoming;
-exports.getPlayers = getPlayers;
+exports.getAllNBAGames = getAllNBAGames;
+exports.getAllUpcomingGames = getAllUpcomingGames;
+exports.getAllPlayers = getAllPlayers;

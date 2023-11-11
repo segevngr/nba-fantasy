@@ -1,7 +1,7 @@
 import React from "react";
-import TeamPicker from "../../components/add-game/TeamPicker";
+import TeamPicker from "../../components/add-tournament/TeamPicker";
 
-const JoinGameTeams = () => {
+const JoinTournamentTeams = () => {
     return (
         <div>
             <div className="choose-team-title">Choose your 5 teams</div>
@@ -10,4 +10,4 @@ const JoinGameTeams = () => {
     )
 }
 
-export default JoinGameTeams;
+export default JoinTournamentTeams;

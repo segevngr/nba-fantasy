@@ -16,19 +16,19 @@ const Navigation = () => {
         })
     }
 
-    const getUserGames = () => {
+    const getUserTournaments = () => {
         if(userResponse) {
-            let games = userResponse.games.map(function (element) {
+            let tournaments = userResponse.tournaments.map((element) => {
                 let id = element._id;
                 return (
                     <li>
-                        <NavLink to={"/game/" + id}>
-                            {element.game_name}
+                        <NavLink to={"/tournament/" + id}>
+                            {element.name}
                         </NavLink>
                     </li>
                 )
             });
-            return (<ul className="nav-links">{games}</ul>);
+            return (<ul className="nav-links">{tournaments}</ul>);
         }
     }
 
@@ -38,22 +38,22 @@ const Navigation = () => {
                 <tbody>
                 <tr>
 
-                    <td className='games'>
+                    <td className='tournaments'>
                         <span className="username">Hello {auth.username}!</span>
                         <Link to="/"><span className="logout" onClick={auth.logout}> Log out</span></Link>
-                        {getUserGames()}
+                        {getUserTournaments()}
                     </td>
 
                     <td className='nav-buttons'>
                         <ul className="nav-links">
                             <li>
-                                <NavLink to="/joingame">
-                                    Join Game
+                                <NavLink to="/jointournament">
+                                    Join
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/newgame">
-                                    New Game
+                                <NavLink to="/newtournament">
+                                    New
                                 </NavLink>
                             </li>
                         </ul>
