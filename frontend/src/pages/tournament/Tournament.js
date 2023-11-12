@@ -5,7 +5,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
-import RankingTable from "../../components/tournament/RankingTable";
+import RankingTable from "../../components/tournament-ranking/RankingTable";
 
 const Tournament = () => {
     const { tid } = useParams();

@@ -14,6 +14,7 @@ import LoggedOut from "./pages/auth/LoggedOut";
 import Login from "./pages/auth/Login";
 import SignUp from "./pages/auth/SignUp";
 import { AuthContext } from './utils/auth-context';
+import logo from './assets/logo.png'
 
 function App() {
 
@@ -84,7 +85,7 @@ function App() {
                 }}>
             <Router>
                 <div className="frame">
-                    <div className="nba-fantasy"> NBA Fantasy</div>
+                    <div className="nba-fantasy"> <img src={logo} alt = "logo" className="logo"/> NBA Fantasy</div>
                     {token && <Navigation/>}
                     {routes}
                 </div>

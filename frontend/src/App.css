@@ -46,6 +46,11 @@ u{
 }
 
 .nba-fantasy{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0px;
     font-size: 60px;
     background-color: #004a83;
     border-radius: 5px;
@@ -53,6 +58,13 @@ u{
     text-align: center;
     padding: 10px;
     font-family: "Century Gothic";
+
+}
+
+.logo{
+    height: 70px;
+    width: auto;
+    margin-right: 10px;
 }
 
 .frame{
