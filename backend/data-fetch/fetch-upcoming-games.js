@@ -15,10 +15,10 @@ async function fetchUpcomingGames() {
     };
 
     const upcomingRes = await axios.request(upcoming_games_req);
-    const upcoming = upcomingRes.data.api.games;
+    const upcomingGamesData = upcomingRes.data.api.games;
 
-    for (let game of upcoming) {
-        const newUpcoming = new Upcoming({
+    for (let game of upcomingGamesData) {
+        const newUpcomingGame = new Upcoming({
             gameId: game.gameId,
             homeId: game.hTeam.teamId,
             homeName: game.hTeam.fullName,
@@ -26,7 +26,7 @@ async function fetchUpcomingGames() {
             awayName: game.vTeam.fullName,
             date: DATE,
         });
-        await newUpcoming.save();
+        await newUpcomingGame.save();
     }
 
 }

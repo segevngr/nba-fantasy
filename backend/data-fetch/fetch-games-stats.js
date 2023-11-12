@@ -3,6 +3,7 @@ const NBAGame = require('../models/nba-game');
 
 async function fetchGamesStats(DATE) {
 
+    // Fetch All Game stats in certain date
     let games_req = {
         method: 'GET',
         url: `https://api-nba-v1.p.rapidapi.com/games/date/${DATE}`,
@@ -12,10 +13,11 @@ async function fetchGamesStats(DATE) {
         }
     };
 
-    const players_req = (id) => {
+    // Fetch all players stats in certain game by game id
+    const players_req = (gameId) => {
         return {
             method: 'GET',
-            url: `https://api-nba-v1.p.rapidapi.com/statistics/players/gameId/${id}`,
+            url: `https://api-nba-v1.p.rapidapi.com/statistics/players/gameId/${gameId}`,
             headers: {
                 'x-rapidapi-host': 'api-nba-v1.p.rapidapi.com',
                 'x-rapidapi-key': 'KEY'
@@ -24,47 +26,46 @@ async function fetchGamesStats(DATE) {
     }
 
     const gamesRes = await axios.request(games_req);
-    const games = gamesRes.data.api.games;
+    const gamesStats = gamesRes.data.api.games;
 
-    for (let game of games) {
-        console.log("fetching data for tournament " +game.gameId)
-        // get players stats:
-        const playeyrsReq = players_req(game.gameId);
+    for (let gameStats of gamesStats) {
+        // Get players stats:
+        const playersReq = players_req(gameStats.gameId);
         const playersRes = await axios.request(playersReq);
+        let playersStats = playersRes.data.api.statistics;
+
         let playersArr = Array(30);
-        let players = playersRes.data.api.statistics;
-        for(let i = 0; i < players.length; i++) {
+        for(let i = 0; i < playersStats.length; i++) {
             playersArr[i] = {
-                pid: players[i].playerId,
-                points: players[i].points,
-                tpm: players[i].tpm,
-                assists: players[i].assists,
-                reb: players[i].defReb,
-                steals: players[i].steals,
-                blocks: players[i].blocks,
+                pid: playersStats[i].playerId,
+                points: playersStats[i].points,
+                tpm: playersStats[i].tpm,
+                assists: playersStats[i].assists,
+                reb: playersStats[i].defReb,
+                steals: playersStats[i].steals,
+                blocks: playersStats[i].blocks,
             };
         }
 
         const newGame = new NBAGame({
-            gameId: game.gameId,
+            gameId: gameStats.gameId,
             date: DATE,
             home: {
-                id: game.hTeam.teamId,
-                name: game.hTeam.fullName,
-                score: game.hTeam.score.points,
+                id: gameStats.hTeam.teamId,
+                name: gameStats.hTeam.fullName,
+                score: gameStats.hTeam.score.points,
             },
             away: {
-                id: game.vTeam.teamId,
-                name: game.vTeam.fullName,
-                score: game.vTeam.score.points,
+                id: gameStats.vTeam.teamId,
+                name: gameStats.vTeam.fullName,
+                score: gameStats.vTeam.score.points,
             },
             players: playersArr,
         });
         await newGame.save();
     }
 
-    console.log("done fetching");
-
+    console.log("Done fetching game stats.");
 }
 
 module.exports = fetchGamesStats;

@@ -18,11 +18,12 @@ const NoTournaments = () => {
     }, []);
 
 
+    // Redirects to Tournament page in case we've found at least one active tournament of the User
     if(auth.userId) {
         axios.get(`http://localhost:5000/user/${auth.userId}`)
             .then(response => {
                 console.log(response.data)
-                if(response.data.tournaments.length > 0) {
+                if(response.data.tournaments) {
                     navigate(`/tournament/${response.data.tournaments[0]._id.toString()}`)
                 }
             })

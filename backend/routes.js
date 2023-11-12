@@ -1,15 +1,15 @@
 const express = require('express');
 
-const dataControllers = require('./controllers/data-controllers');
+const nbaDataControllers = require('./controllers/nba-data-controllers');
 const tournamentControllers = require('./controllers/tournament-controllers');
 const usersControllers = require('./controllers/user-controllers');
 const calcScoreController = require('./controllers/calc-score-controller')
 
 const router = express.Router();
 
-router.get('/get-upcoming-games', dataControllers.getAllUpcomingGames);
-router.get('/get-players', dataControllers.getAllPlayers);
-router.get('/get-nba-games', dataControllers.getAllNBAGames);
+router.get('/get-upcoming-games', nbaDataControllers.getAllUpcomingGames);
+router.get('/get-players', nbaDataControllers.getAllPlayers);
+router.get('/get-nba-games', nbaDataControllers.getAllNBAGames);
 
 router.post('/signup', usersControllers.signup);
 router.post('/login', usersControllers.login);

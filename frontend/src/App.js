@@ -2,11 +2,11 @@ import React, { useState, useCallback, useEffect } from 'react';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import './App.css'
 import Navigation from "./components/Navigation";
-import Tournament from './pages/tournament/Tournament';
+import Tournament from './pages/home/Tournament';
 import NewTournament from "./pages/new-tournament/NewTournament";
 import ChooseTeam from "./pages/new-tournament/ChooseTeam";
 import ChoosePlayers from "./pages/new-tournament/ChoosePlayers";
-import NoTournaments from "./pages/tournament/NoTournaments";
+import NoTournaments from "./pages/home/NoTournaments";
 import JoinTournament from "./pages/join-tournament/JoinTournament";
 import JoinTournamentTeams from "./pages/join-tournament/JoinTournamentTeams";
 import JoinTournamentPlayers from "./pages/join-tournament/JoinTournamentPlayers";
