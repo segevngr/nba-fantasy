@@ -12,7 +12,7 @@ import {AuthContext} from "../../utils/auth-context";
 const GameStats = (props) => {
     const auth = useContext(AuthContext);
 
-    let userPref;
+    let currentUserPref;
 
     let homeId = '0';
     let homeName = '-';
@@ -39,7 +39,7 @@ const GameStats = (props) => {
             winnerName = awayName;
         }
 
-        for (let team of userPref.teams) {
+        for (let team of currentUserPref.teams) {
             if (team === winnerId) {
                 winner = winnerName;
             }
@@ -47,9 +47,9 @@ const GameStats = (props) => {
     }
 
     const getScorers = () => {
-        for (let scorer of userPref.players.scorers) {
+        for (let scorer of currentUserPref.players.scorers) {
             let i = 0;
-            for (let player of props.stats.players) {
+            for (let player of props.gameStats.players) {
                 if (player && scorer.id === player.pid && player.points !== '0') {
                     scorers[i][0] = scorer.name;
                     scorers[i][1] = player.points;
@@ -60,9 +60,9 @@ const GameStats = (props) => {
     }
 
     const getAssists = () => {
-        for (let assistPlayer of userPref.players.assists) {
+        for (let assistPlayer of currentUserPref.players.assists) {
             let i = 0;
-            for (let player of props.stats.players) {
+            for (let player of props.gameStats.players) {
                 if (player && assistPlayer.id === player.pid && player.assists !== '0') {
                     assists[i][0] = assistPlayer.name;
                     assists[i][1] = player.assists;
@@ -73,9 +73,9 @@ const GameStats = (props) => {
     }
 
     const getTscorers = () => {
-        for (let tscorer of userPref.players.tscorers) {
+        for (let tscorer of currentUserPref.players.tscorers) {
             let i = 0;
-            for (let player of props.stats.players) {
+            for (let player of props.gameStats.players) {
                 if (player && tscorer.id === player.pid && player.tpm !== '0') {
                     tscorers[i][0] = tscorer.name;
                     tscorers[i][1] = player.tpm;
@@ -86,9 +86,9 @@ const GameStats = (props) => {
     }
 
     const getDefenders = () => {
-        for (let defender of userPref.players.defenders) {
+        for (let defender of currentUserPref.players.defenders) {
             let i = 0;
-            for (let player of props.stats.players) {
+            for (let player of props.gameStats.players) {
                 if (player && defender.id === player.pid) {
                     let defPoints = parseInt(player.steals) + parseInt(player.blocks);
                     if (defPoints !== 0)
@@ -100,21 +100,21 @@ const GameStats = (props) => {
         }
     }
 
-    if (props.stats && props.game) {
-        date = props.stats.date;
-        homeId = props.stats.home.id;
-        homeName = props.stats.home.name;
-        homeScore = props.stats.home.score;
-        awayId = props.stats.away.id;
-        awayName = props.stats.away.name;
-        awayScore = props.stats.away.score;
+    if (props.gameStats && props.tournamentData) {
+        date = props.gameStats.date;
+        homeId = props.gameStats.home.id;
+        homeName = props.gameStats.home.name;
+        homeScore = props.gameStats.home.score;
+        awayId = props.gameStats.away.id;
+        awayName = props.gameStats.away.name;
+        awayScore = props.gameStats.away.score;
 
-        for(let userP of props.game.users_pref) {
-            if (userP.userId === auth.userId)
-                userPref = userP;
+        for(let userPref of props.tournamentData.users_pref) {
+            if (userPref.userId === auth.userId)
+                currentUserPref = userPref;
         }
 
-        if(userPref) {
+        if(currentUserPref) {
             getWinnerTeam();
             getScorers();
             getAssists();

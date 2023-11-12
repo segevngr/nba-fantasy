@@ -23,7 +23,7 @@ const NoTournaments = () => {
         axios.get(`http://localhost:5000/user/${auth.userId}`)
             .then(response => {
                 console.log(response.data)
-                if(response.data.tournaments) {
+                if(response.data.tournaments.length > 0) {
                     navigate(`/tournament/${response.data.tournaments[0]._id.toString()}`)
                 }
             })
@@ -37,9 +37,9 @@ const NoTournaments = () => {
             </div>
             <div className="no-games">
                 You have no Games!<br />
-                <Link to="/jointournament"><u>Join game</u></Link>
+                <Link to="/selection/join"><u>Join game</u></Link>
                 <span> or </span>
-                <Link to="/newtournament"><u>Create a new one</u></Link>
+                <Link to="/selection/new"><u>Create a new one</u></Link>
             </div>
         </div>
     )

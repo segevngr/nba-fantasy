@@ -47,12 +47,12 @@ const Navigation = () => {
                     <td className='nav-buttons'>
                         <ul className="nav-links">
                             <li>
-                                <NavLink to="/jointournament">
+                                <NavLink to="/selection/join">
                                     Join
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/newtournament">
+                                <NavLink to="/selection/new">
                                     New
                                 </NavLink>
                             </li>

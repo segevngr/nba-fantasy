@@ -3,7 +3,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
 import {createFilterOptions} from "@mui/material";
 
-const PlayersInput = (props) => {
+const PlayersSelector = (props) => {
 
     const OPTIONS_LIMIT = 8;
     const filterOptions = createFilterOptions({
@@ -11,7 +11,7 @@ const PlayersInput = (props) => {
     });
 
     const getId = (name) => {
-        for(let player of props.playerMap) {
+        for(let player of props.allPlayers) {
             if(player.name === name)
                 return player.id;
         }
@@ -37,7 +37,7 @@ const PlayersInput = (props) => {
                 }}
                 multiple
                 id="tags-outlined"
-                options={props.playerMap}
+                options={props.allPlayers}
                 getOptionLabel={(option) => option.name}
                 renderInput={(params) => (
                     <TextField
@@ -50,4 +50,4 @@ const PlayersInput = (props) => {
     );
 }
 
-export default PlayersInput;
+export default PlayersSelector;

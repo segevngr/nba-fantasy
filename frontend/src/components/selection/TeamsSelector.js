@@ -1,12 +1,13 @@
 import React, {useState} from 'react';
 import TeamButton from "./TeamButton";
-import './TeamPicker.css';
-import {Link} from "react-router-dom";
+import './TeamsSelector.css';
+import {useNavigate} from "react-router-dom";
 
-const TeamPicker = () => {
+const TeamsSelector = () => {
 
     const [teamsSelected, setTeamsSelected] = useState(0);
     const [teamIds, setTeamIds] = useState(Array(41).fill(false));
+    let navigate = useNavigate();
 
     const incSelected = () => {
         setTeamsSelected(teamsSelected+1);
@@ -33,26 +34,20 @@ const TeamPicker = () => {
         );
     }
 
-    function getSelectedTeams() {
-        let ids = [0, 0, 0, 0, 0];
-        let idx = 0;
-        for(let i=0; i<teamIds.length; i++) {
-            if(teamIds[i]) {
-                ids[idx] = i;
-                idx++;
-            }
-        }
-        return window.location.pathname +"/" +ids[0] +"/" +ids[1] +"/" +ids[2]
-            +"/" +ids[3] +"/" +ids[4];
+    function getSelectedTeamsAndContinue() {
+        let selectedTeamsIds = teamIds.reduce((indices, element, index) => {
+            if (element)
+                indices.push(index);
+            return indices;
+        }, []);
+        navigate(`${window.location.pathname}/${selectedTeamsIds[0]}/${selectedTeamsIds[1]}/${selectedTeamsIds[2]}/${selectedTeamsIds[3]}/${selectedTeamsIds[4]}`)
     }
 
-    const getBackURL = () => {
-        const currURL = window.location.pathname;
-        const split = currURL.split("/");
-        let back ='';
-        for(let i=0; i<split.length-1; i++)
-            back = back + split[i] + "/";
-        return back;
+    const navigateBack = () => {
+        let url = window.location.pathname
+        const lastSlashIndex = url.lastIndexOf('/');
+        let backURL = lastSlashIndex !== -1 ? url.substring(0, lastSlashIndex) : url;
+        navigate(backURL)
     }
 
     return (
@@ -92,9 +87,9 @@ const TeamPicker = () => {
                 <div>{renderTeamButton(41)}</div>
             </div>
             <div className="team-picker-btn-container">
-                <Link to={getBackURL()}><div className="btn">Back</div></Link>
+               <div onClick={navigateBack} className="btn">Back</div>
                 {teamsSelected===5 ?
-                    <Link to={getSelectedTeams()}><div className="btn">Next</div></Link>
+                   <div className="btn" onClick={getSelectedTeamsAndContinue}>Next</div>
                     : <div className="disabled-btn">Next</div>}
             </div>
         </div>
@@ -102,4 +97,4 @@ const TeamPicker = () => {
     );
 }
 
-export default TeamPicker;
+export default TeamsSelector;

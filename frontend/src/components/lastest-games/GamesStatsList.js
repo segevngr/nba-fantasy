@@ -7,8 +7,8 @@ const GamesStatsList = (props) => {
     const renderGameStats = (blockId) => {
         return (
             <GameStats
-                stats = {props.gamesStatsResponse[blockId]}
-                game = {props.gameResponse}
+                gameStats = {props.gamesStats[blockId]}
+                tournamentData = {props.tournamentData}
                 id = {blockId}
             />
         );

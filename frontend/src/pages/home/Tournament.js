@@ -1,11 +1,11 @@
 import UpcomingGamesList from "../../components/upcoming-games/UpcomingGamesList";
 import './Tournament.css';
-import GamesStatsList from "../../components/tournament-games/GamesStatsList";
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import {useParams} from "react-router-dom";
 import CircularProgress from '@mui/material/CircularProgress';
-import RankingTable from "../../components/tournament-ranking/RankingTable";
+import RankingTable from "../../components/ranking/RankingTable";
+import GamesStatsList from "../../components/lastest-games/GamesStatsList";
 
 const Tournament = () => {
     const { tid } = useParams();
@@ -47,15 +47,15 @@ const Tournament = () => {
                         <div className='ranking-title'>Ranking</div>
                         <RankingTable
                             users = {usersResponse}
-                            game = {tournamentResponse}
+                            tournamentData = {tournamentResponse}
                         />
                     </td>
                     <td className='games-stats-container'>
                         <div className='game-stats-title'>Latest Games</div>
                         {gamesStatsResponse ?
                             <GamesStatsList
-                                gamesStatsResponse = {gamesStatsResponse}
-                                gameResponse = {tournamentResponse}
+                                gamesStats = {gamesStatsResponse}
+                                tournamentData = {tournamentResponse}
                             />
                             :
                             <div className='loader-container'><CircularProgress /></div>}

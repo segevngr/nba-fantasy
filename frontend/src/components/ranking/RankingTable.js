@@ -14,7 +14,7 @@ const RankingTable = (props) => {
 
     const getRanking = () => {
         let rankings=[];
-        for (let userP of props.game.users_pref) {
+        for (let userP of props.tournamentData.users_pref) {
             let userId = userP.userId;
             let score = userP.score;
             let change = userP.change;
@@ -54,7 +54,7 @@ const RankingTable = (props) => {
                     <td>Score</td>
                     <td>Change</td>
                 </tr>
-                {props.users && props.game && getRanking()}
+                {props.users && props.tournamentData && getRanking()}
                 </tbody>
             </table>
         </div>

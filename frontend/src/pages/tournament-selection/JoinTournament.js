@@ -24,7 +24,7 @@ const JoinTournament = () => {
                         return;
                     }
                 }
-                navigate(`/jointournament/${tournamentId}`)})
+                navigate(`/selection/join/${tournamentId}`)})
             .catch(function (error) {
                     setError("The Tournament ID you entered is Invalid.");
             })

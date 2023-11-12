@@ -18,7 +18,7 @@ const NewTournament = () => {
                            setInput = {setName}/>
                 <div className="new-tournament-btn-con">
                     <Link to="/"><div className="btn">Back </div></Link>
-                    <Link to={"/newtournament/" +tournamentName}><div className="btn">Next </div></Link>
+                    <Link to={"/selection/new/" +tournamentName}><div className="btn">Next </div></Link>
                 </div>
             </div>
 
