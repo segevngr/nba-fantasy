@@ -2,6 +2,7 @@ const HttpError = require('../models/http-error');
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const {TOKEN_KEY} = require("../check-auth");
 
 const getAllUsers = async (req, res, next) => {
     let users;
@@ -59,7 +60,7 @@ const signup = async (req, res, next) => {
     let hashedPassword;
     hashedPassword = await bcrypt.hash(password, 12);
 
-    const createdUser = new User({
+    const newUser = new User({
         username,
         email,
         password: hashedPassword,
@@ -67,7 +68,7 @@ const signup = async (req, res, next) => {
     });
 
     try {
-        await createdUser.save();
+        await newUser.save();
     } catch (err) {
         const error = new HttpError(
             'Signing up failed, please try again later.',
@@ -77,16 +78,14 @@ const signup = async (req, res, next) => {
     }
 
     let token;
-    token = jwt.sign(
-            { userId: createdUser._id, username: createdUser.username},
-            'supersecret_dont_share',);
+    token = jwt.sign({ userId: newUser._id, username: newUser.username}, TOKEN_KEY,);
 
     res
         .status(201)
         .json(
             {
-                userId: createdUser._id,
-                username: createdUser.username,
+                userId: newUser._id,
+                username: newUser.username,
                 token:token
             });
 };
@@ -126,10 +125,7 @@ const login = async (req, res, next) => {
     }
 
     let token;
-    token = jwt.sign(
-        { userId: existingUser.id, username: existingUser.username },
-        'supersecret_dont_share',
-    );
+    token = jwt.sign({ userId: existingUser._id, username: existingUser.username }, TOKEN_KEY,);
 
     res.json({
         userId: existingUser._id,

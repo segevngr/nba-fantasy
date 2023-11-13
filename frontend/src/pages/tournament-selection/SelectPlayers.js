@@ -36,10 +36,12 @@ const SelectPlayers = () => {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:5000/get-players").then(response => {
+        axios.get("http://localhost:5000/get-players", {
+            headers: {'Authorization': `Bearer ${auth.token}`,},
+        }).then(response => {
             let players = response.data;
-            players.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
-            players = players.filter((v,i,a)=>a.findIndex(t=>(t.name === v.name))===i)
+            players.sort((a, b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0))
+            players = players.filter((v, i, a) => a.findIndex(t => (t.name === v.name)) === i)
             setAllPlayers(players);
         })
     }, []);
@@ -48,7 +50,7 @@ const SelectPlayers = () => {
         if(!isValidInput())
             setIsValid(false);
         else
-            createOrJoinTournament(auth.userId, mode, tournament, tid1, tid2, tid3, tid4, tid5, selectedPlayers);
+            createOrJoinTournament(auth, mode, tournament, tid1, tid2, tid3, tid4, tid5, selectedPlayers);
     }
 
     return (

@@ -40,6 +40,7 @@ function App() {
         localStorage.removeItem('userData');
     }, []);
 
+    // Auto-login upon refresh
     useEffect(() => {
         const storedData = JSON.parse(localStorage.getItem('userData'));
         if (storedData && storedData.token) {

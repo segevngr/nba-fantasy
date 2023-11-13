@@ -9,9 +9,11 @@ const Navigation = () => {
 
     const [userResponse, setUserResponse] = useState('');
 
-    if(auth.userId) {
-        axios.get(`http://localhost:5000/user/${auth.userId}`)
-            .then(response => {
+    if (auth.userId) {
+        axios.get(`http://localhost:5000/user/${auth.userId}`,
+            {
+                headers: {'Authorization': `Bearer ${auth.token}`,},
+            }).then(response => {
             setUserResponse(response.data);
         })
     }

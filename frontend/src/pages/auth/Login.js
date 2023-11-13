@@ -4,6 +4,7 @@ import {Link, useNavigate} from "react-router-dom";
 import TextInput from "../../components/TextInput";
 import axios from "axios";
 import {AuthContext} from "../../utils/auth-context";
+import PassInput from "../../components/PassInput";
 
 const Login = () => {
     const auth = useContext(AuthContext);
@@ -44,7 +45,7 @@ const Login = () => {
             <div className="signup-con">
                 <TextInput title="Email"
                            setInput = {setEmailInput}/>
-                <TextInput title ="Password"
+                <PassInput title ="Password"
                            setInput={setPasswordInput}/>
                 <div className="valid-error">{error}</div>
                 <div className='signup-buttons'>

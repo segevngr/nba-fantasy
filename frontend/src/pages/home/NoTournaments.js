@@ -19,14 +19,16 @@ const NoTournaments = () => {
 
 
     // Redirects to Tournament page in case we've found at least one active tournament of the User
-    if(auth.userId) {
-        axios.get(`http://localhost:5000/user/${auth.userId}`)
-            .then(response => {
-                console.log(response.data)
-                if(response.data.tournaments.length > 0) {
-                    navigate(`/tournament/${response.data.tournaments[0]._id.toString()}`)
-                }
-            })
+    if (auth.userId) {
+        axios.get(`http://localhost:5000/user/${auth.userId}`,
+            {
+                headers: {'Authorization': `Bearer ${auth.token}`,},
+            }).then(response => {
+            console.log(response.data)
+            if (response.data.tournaments.length > 0) {
+                navigate(`/tournament/${response.data.tournaments[0]._id.toString()}`)
+            }
+        })
     }
 
     return (

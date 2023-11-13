@@ -16,7 +16,10 @@ const JoinTournament = () => {
     }
 
     const handleJoin = () => {
-        axios.get(`http://localhost:5000/tournament/${tournamentId}`)
+        axios.get(`http://localhost:5000/tournament/${tournamentId}`,
+            {
+                headers: {'Authorization': `Bearer ${auth.token}`,},
+            })
             .then(response => {
                 for(let userP of response.data.users_pref) {
                     if(userP.userId === auth.userId) {

@@ -5,7 +5,7 @@ const Player = require('../models/player');
 
 LATEST_GAMES_COUNT = 10
 
-// USed to Fetch NBA Data from the DB
+// Used to Fetch NBA Data from the DB
 
 const getAllNBAGames = async (req, res, next) => {
     let nbaGames;
