@@ -5,7 +5,7 @@ const Tscorer = (props) => {
     return(
         <tr>
             <td>
-                {props.points +' 3-Points for ' +props.name}
+                {props.points +' Threes for ' +props.name}
             </td>
             <td style={{textAlign: "right"}}>
                 +{props.points}
