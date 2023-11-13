@@ -11,7 +11,7 @@ const Tournament = () => {
     const { tid } = useParams();
 
     const [upcomingResponse, setUpcomingResponse] = useState('');
-    const [gamesStatsResponse, setGamesStatsResponse] = useState('');
+    const [latestGamesStatsResponse, setLatestGamesStatsResponse] = useState('');
     const [tournamentResponse, setTournamentResponse] = useState('');
     const [usersResponse, setUsersResponse] = useState('');
 
@@ -24,8 +24,8 @@ const Tournament = () => {
             setUsersResponse(response.data);
         });
 
-        axios.get("http://localhost:5000/get-nba-games").then(response => {
-            setGamesStatsResponse(response.data);
+        axios.get("http://localhost:5000/get-latest-nba-games").then(response => {
+            setLatestGamesStatsResponse(response.data);
         });
 
         axios.get("http://localhost:5000/get-upcoming-games").then(response => {
@@ -52,9 +52,9 @@ const Tournament = () => {
                     </td>
                     <td className='games-stats-container'>
                         <div className='game-stats-title'>Latest Games</div>
-                        {gamesStatsResponse ?
+                        {latestGamesStatsResponse ?
                             <GamesStatsList
-                                gamesStats = {gamesStatsResponse}
+                                gamesStats = {latestGamesStatsResponse}
                                 tournamentData = {tournamentResponse}
                             />
                             :

@@ -3,7 +3,10 @@ const NBAGame = require('../models/nba-game')
 const Upcoming = require('../models/upcoming')
 const Player = require('../models/player');
 
-// Gets all NBA games stats from db
+LATEST_GAMES_COUNT = 10
+
+// USed to Fetch NBA Data from the DB
+
 const getAllNBAGames = async (req, res, next) => {
     let nbaGames;
     try {
@@ -19,7 +22,21 @@ const getAllNBAGames = async (req, res, next) => {
     res.json(nbaGames);
 };
 
-// Gets all NBA upcoming games data from db
+const getLatestNBAGames = async (req, res, next) => {
+    let latestGames;
+    try {
+        latestGames = await NBAGame.find().sort({date: -1}).limit(LATEST_GAMES_COUNT);
+    } catch (err) {
+        const error = new HttpError(
+            'Something went wrong, could not find games stats.',
+            500
+        );
+        return next(error);
+    }
+
+    res.json(latestGames);
+};
+
 const getAllUpcomingGames = async (req, res, next) => {
     let upcomingGames;
     try {
@@ -35,7 +52,6 @@ const getAllUpcomingGames = async (req, res, next) => {
     res.json(upcomingGames);
 };
 
-// Gets all NBA player names and ids from db
 const getAllPlayers = async (req, res, next) => {
     let playerNames;
     try {
@@ -54,3 +70,4 @@ const getAllPlayers = async (req, res, next) => {
 exports.getAllNBAGames = getAllNBAGames;
 exports.getAllUpcomingGames = getAllUpcomingGames;
 exports.getAllPlayers = getAllPlayers;
+exports.getLatestNBAGames = getLatestNBAGames;

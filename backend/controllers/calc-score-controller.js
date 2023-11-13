@@ -10,7 +10,6 @@ const calcUserTournamentScore = async (req, res, next) => {
 
     for(let userP of userTournament.users_pref){
         if(userP.userId === uid) {
-            console.log(userP);
             userP.score = calcScore(nbaGames, userP.teams, userP.players);
             userP.change = 0;
         }
